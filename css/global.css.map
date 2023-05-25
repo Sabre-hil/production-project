@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,KAAK,CAAC;EACJ,kBAAkB,CAAA,mCAAC;EAEnB,aAAa,CAAA,KAAC;EACd,aAAa,CAAA,KAAC;EACd,QAAQ,CAAA,gEAAC;EAET,aAAa,CAAA,KAAC;EACd,aAAa,CAAA,KAAC;EACd,QAAQ,CAAA,gEAAC;EAGT,eAAe,CAAA,KAAC;EAEhB,eAAe,CAAA,MAAC;EAChB,0BAA0B,CAAA,KAAC;CAC5B",
+    "sources": [
+        "../src/app/styles/variables/global.scss"
+    ],
+    "names": [],
+    "file": "global.css"
+}

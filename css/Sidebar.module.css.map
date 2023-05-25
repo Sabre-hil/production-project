@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,QAAQ,CAAC;EACP,MAAM,EAAE,kCAAkC;EAC1C,KAAK,EAAE,oBAAoB;EAC3B,KAAK,EAAE,KAAK;EACZ,UAAU,EAAE,wBAAwB;EAEpC,QAAQ,EAAE,QAAQ;EAClB,UAAU,EAAE,UAAU;CACvB;;AAED,AAAA,UAAU,CAAC;EACT,KAAK,EAAE,8BAA8B;EACrC,KAAK,EAAE,IAAI;CACZ;;AAED,AAAA,UAAU,CAAC;EACT,QAAQ,EAAE,QAAQ;EAClB,MAAM,EAAE,IAAI;EACZ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,KAAK,EAAE,IAAI;CACZ",
+    "sources": [
+        "../src/widgets/Sidebar/ui/Sidebar/Sidebar.module.scss"
+    ],
+    "names": [],
+    "file": "Sidebar.module.css"
+}
