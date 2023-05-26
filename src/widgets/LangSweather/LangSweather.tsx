@@ -1,7 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ThemeButton } from 'shared/ui/Button/Button';
-import csl from './LangSweather.module.scss';
 
 interface LangSweatherProps {
   className?: string;
@@ -14,6 +13,6 @@ export const LangSweather = ({ className }: LangSweatherProps) => {
   };
 
   return (
-    <Button className={classNames(csl.LangSweather, {}, [className])} theme={ThemeButton.CLEAR} onClick={toggle}>{t('Язык')}</Button>
+    <Button className={classNames('', {}, [className])} theme={ThemeButton.CLEAR} onClick={toggle}>{t('Язык')}</Button>
   );
 };
