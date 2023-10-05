@@ -1,11 +1,13 @@
+/* eslint-disable react/jsx-no-useless-fragment */
 /* eslint-disable i18next/no-literal-string */
 import { Suspense } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import PageLoader from 'widgets/PageLoader/ui/PageLoader';
 import { RouteConfig } from '../../../../shared/config/routeConfig/routeConfig';
 
 export const AppRouter = () => (
-  <div>
-    <Suspense fallback={<div>Loading...</div>}>
+  <>
+    <Suspense fallback={<PageLoader />}>
       <Routes>
         {Object.values(RouteConfig).map(({ element, path }) => (
           <Route
@@ -16,7 +18,7 @@ export const AppRouter = () => (
         ))}
       </Routes>
     </Suspense>
-  </div>
+  </>
 );
 
 export default AppRouter;
