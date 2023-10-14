@@ -40,10 +40,11 @@
   },
   "include": [
     "./config/jest/setupTests.ts",
+    "./src/**/*.ts",
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/**/*.ts",
     "**/**/*.tsx"
-  ],
+, "config/storybook/preview.js", "config/storybook/main.js"  ],
 }

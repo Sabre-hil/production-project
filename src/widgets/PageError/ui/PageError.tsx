@@ -12,11 +12,9 @@ const reloadPage = () => {
   location.reload();
 };
 
-const PageError = ({ className }: ErrorPageProps) => (
+export const PageError = ({ className }: ErrorPageProps) => (
   <div className={classNames(cls.PageError, {}, [])}>
     <h1>{t('Произошла ошибка')}</h1>
     <Button onClick={reloadPage}>{t('Обновить страницу')}</Button>
   </div>
 );
-
-export default PageError;
