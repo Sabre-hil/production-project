@@ -15,6 +15,6 @@ export const LangSweather = ({ className, short }: LangSweatherProps) => {
   };
 
   return (
-    <Button className={classNames('', {}, [className])} theme={ButtonTheme.CLEAR} onClick={toggle}>{t(short ? "Короткий язык" : "Язык")}</Button>
+    <Button className={classNames('', {}, [className])} theme={ButtonTheme.CLEAR} onClick={toggle}>{t(short ? 'Короткий язык' : 'Язык')}</Button>
   );
 };

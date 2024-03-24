@@ -54,7 +54,7 @@ export const Square = Template.bind({});
 Square.args = {
   children: '>',
   theme: ButtonTheme.BACKGROUND_INVERTED,
-  square: true
+  square: true,
 };
 
 export const SquareSizeM = Template.bind({});
@@ -62,7 +62,7 @@ SquareSizeM.args = {
   children: '>',
   theme: ButtonTheme.BACKGROUND_INVERTED,
   square: true,
-  size: ButtonSize.M
+  size: ButtonSize.M,
 };
 
 export const SquareSizeL = Template.bind({});
@@ -70,7 +70,7 @@ SquareSizeL.args = {
   children: '>',
   theme: ButtonTheme.BACKGROUND_INVERTED,
   square: true,
-  size: ButtonSize.L
+  size: ButtonSize.L,
 };
 
 export const SquareSizeXL = Template.bind({});
@@ -78,5 +78,5 @@ SquareSizeXL.args = {
   children: '>',
   theme: ButtonTheme.BACKGROUND_INVERTED,
   square: true,
-  size: ButtonSize.XL
+  size: ButtonSize.XL,
 };
