@@ -15,6 +15,7 @@ export const LangSweather = ({ className, short }: LangSweatherProps) => {
   };
 
   return (
+    /* i18next-extract-disable-next-line */
     <Button className={classNames('', {}, [className])} theme={ButtonTheme.CLEAR} onClick={toggle}>{t(short ? 'Короткий язык' : 'Язык')}</Button>
   );
 };
