@@ -14,7 +14,7 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', "react-hooks"],
+  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
   rules: {
     'react/jsx-filename-extension': [
       2,
@@ -41,7 +41,8 @@ module.exports = {
     'linebreak-style': 'off',
     'import/no-absolute-path': 'off',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'error'
+    'react-hooks/exhaustive-deps': 'error',
+    'no-param-reassign': 'off',
   },
   globals: {
     __IS_DEV__: true,

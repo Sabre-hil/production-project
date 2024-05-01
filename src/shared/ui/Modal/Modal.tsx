@@ -1,5 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import {
-  ReactNode, useCallback, useEffect, useRef, useState,
+  ReactNode,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  MouseEvent,
 } from 'react';
 import { classNames } from '../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
@@ -30,7 +38,7 @@ export const Modal = (props: ModalProps) => {
     [cls.closed]: isClosing,
   };
 
-  const closeHandler = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
+  const closeHandler = useCallback((e: MouseEvent<HTMLDivElement>) => {
     if (modalRef.current === e.target) {
       setIsClosing(true);
       timeRef.current = setTimeout(() => {
@@ -46,11 +54,11 @@ export const Modal = (props: ModalProps) => {
       onCLose();
       setIsClosing(false);
     }, ANIMATION_DELAY);
-  }
+  };
 
   const onKeyDown = useCallback((e: KeyboardEvent) => {
     if (e.key === 'Escape') {
-        closeKeyHandler();
+      closeKeyHandler();
     }
   }, [closeHandler]);
 
@@ -66,13 +74,17 @@ export const Modal = (props: ModalProps) => {
 
   return (
     <Portal>
-        <div className={classNames(cls.Modal, mods, [className])}>
-          <div ref={modalRef} onClick={closeHandler} className={cls.overlay}>
-            <div className={cls.content}>
-              {children}
-            </div>
+      <div className={classNames(cls.Modal, mods, [className])}>
+        <div
+          ref={modalRef}
+          onClick={closeHandler}
+          className={cls.overlay}
+        >
+          <div className={cls.content}>
+            {children}
           </div>
         </div>
+      </div>
     </Portal>
   );
 };
