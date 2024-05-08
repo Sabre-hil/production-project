@@ -25,6 +25,8 @@
     transition: 0.3s transform ease;
     transform: scale(0.5);
     max-width: 60%;
+    background-color: var(--inverted-bg-color);
+    color: var(--secondary-color);
 }
 
 .opened {

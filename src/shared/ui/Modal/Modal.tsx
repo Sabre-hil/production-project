@@ -9,6 +9,7 @@ import {
   useState,
   MouseEvent,
 } from 'react';
+import { useTheme } from 'app/providers/ThemeProvider';
 import { classNames } from '../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
@@ -26,6 +27,7 @@ export const Modal = (props: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const timeRef = useRef<ReturnType<typeof setTimeout>>();
   const modalRef = useRef<HTMLDivElement>();
+  const { theme } = useTheme();
   const {
     className,
     children,
@@ -74,7 +76,7 @@ export const Modal = (props: ModalProps) => {
 
   return (
     <Portal>
-      <div className={classNames(cls.Modal, mods, [className])}>
+      <div className={classNames(cls.Modal, mods, [className, theme])}>
         <div
           ref={modalRef}
           onClick={closeHandler}
