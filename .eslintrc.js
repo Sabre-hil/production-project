@@ -17,7 +17,7 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
   rules: {
     'react/jsx-filename-extension': [
-      2,
+      4,
       { extensions: ['.js', '.jsx', '.tsx'] },
     ],
     'import/no-unresolved': 'off',
