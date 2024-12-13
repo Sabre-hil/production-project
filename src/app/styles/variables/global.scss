@@ -13,6 +13,7 @@
     // Размеры
     --navbar-height: 50px;
     --sidebar-width: 300px;
+    /* stylelint-disable-next-line custom-property-pattern */
     --sidebar-width--collapsed: 80px;
 
     // z - indexes
@@ -20,5 +21,8 @@
 
     // Colors
 
-    --overlay-color: rgba(0 0 0/ 40%);
+    /* stylelint-disable-next-line no-missing-end-of-source-newline */
+    --overlay-color: rgba(0 0 0 / 40%);
+    --red-light: rgb(255 17 17);
+    --red-dark: rgb(181 9 9);
 }
