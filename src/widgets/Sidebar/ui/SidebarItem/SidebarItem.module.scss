@@ -1,0 +1,17 @@
+.item {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.link {
+    margin-top: 10px;
+}
+
+.collapsed {
+    .link {
+        opacity: 0;
+        transition: 0.2s opacity;
+        width: 0;
+    }
+}

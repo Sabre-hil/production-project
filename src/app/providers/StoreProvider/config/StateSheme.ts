@@ -3,6 +3,7 @@ import { CounterSheme } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
 import { LoginSheme } from 'features/AuthByUsername/model/types/loginSheme';
 import { AnyAction } from '@reduxjs/toolkit';
+import { ProfileScheme } from 'entities/Profile';
 
 export interface StateSheme {
     counter: CounterSheme;
@@ -10,6 +11,7 @@ export interface StateSheme {
 
     // Асинхронные редюсеры
     loginForm?: LoginSheme;
+    profile?: ProfileScheme;
 }
 
 export type StateShemeKey = keyof StateSheme;
