@@ -10,7 +10,7 @@ export interface Profile {
     "username": string;
 }
 
-export interface ProfileScheme {
+export interface ProfileSchema {
     data?: Profile | null;
     isLoading: boolean;
     isError?: string;

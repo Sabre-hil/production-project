@@ -15,7 +15,6 @@ interface SidebarProps {
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
   const [collapsed, setCollapsed] = useState(false);
-  const { t } = useTranslation();
   const [state, setState] = useState(0);
 
   const onToggle = () => {
@@ -49,20 +48,6 @@ export const Sidebar = memo(({ className }: SidebarProps) => {
             key={item.path}
           />
         ))}
-        {/* <AppLink
-          theme={AppLinkTheme.SECONDARY}
-          to={RoutePath.main}
-          className={cls.link}
-        >
-          {t('Главная')}
-        </AppLink>
-        <AppLink
-          theme={AppLinkTheme.SECONDARY}
-          to={RoutePath.about}
-          className={cls.link}
-        >
-          {t('О сайте')}
-        </AppLink> */}
       </div>
       <div className={cls.switchers}>
         <ThemeSwitcher />

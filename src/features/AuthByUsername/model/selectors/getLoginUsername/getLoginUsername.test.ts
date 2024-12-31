@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSheme } from 'app/providers/StoreProvider';
+import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginUsername } from './getLoginUsername';
 
 describe('getLoginUsername.test', () => {
@@ -8,12 +8,12 @@ describe('getLoginUsername.test', () => {
             loginForm: {
                 username: 'Andrey'
             },
-        } as unknown as StateSheme;
+        } as unknown as StateSchema;
 
         expect(getLoginUsername(state)).toEqual('Andrey');
     });
     test('should work with empty state', () => {
-        const state = {} as unknown as StateSheme;
+        const state = {} as unknown as StateSchema;
         expect(getLoginUsername(state)).toEqual('');
     });
 });

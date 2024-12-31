@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
-import { Profile, ProfileScheme } from '../types/profile';
+import { Profile, ProfileSchema } from '../types/profile';
 
-const initialState: ProfileScheme = {
+const initialState: ProfileSchema = {
     data: null,
     isLoading: null,
     isError: null,

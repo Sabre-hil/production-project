@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSheme } from 'app/providers/StoreProvider';
+import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginPassword } from './getLoginPassword';
 
 describe('getLoginPassword.test', () => {
@@ -8,12 +8,12 @@ describe('getLoginPassword.test', () => {
             loginForm: {
                 password: '1234'
             },
-        } as unknown as StateSheme;
+        } as unknown as StateSchema;
 
         expect(getLoginPassword(state)).toEqual('1234');
     });
     test('should work with empty state', () => {
-        const state = {} as unknown as StateSheme;
+        const state = {} as unknown as StateSchema;
         expect(getLoginPassword(state)).toEqual('');
     });
 });

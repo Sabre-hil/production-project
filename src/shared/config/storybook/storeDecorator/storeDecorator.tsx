@@ -1,8 +1,8 @@
 import { Story } from '@storybook/react';
-import { StateSheme, StoreProvider } from 'app/providers/StoreProvider';
+import { StateSchema, StoreProvider } from 'app/providers/StoreProvider';
 
-export const StoreDecorator = (state: StateSheme) => (StoryComponent: Story) => (
-    <StoreProvider inititalState={state}>
+export const StoreDecorator = (state: StateSchema) => (StoryComponent: Story) => (
+    <StoreProvider initialState={state}>
         <StoryComponent />
     </StoreProvider>
 );

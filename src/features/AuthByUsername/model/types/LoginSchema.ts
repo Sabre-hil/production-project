@@ -1,4 +1,4 @@
-export interface LoginSheme {
+export interface LoginSchema {
     username?: string,
     password?: string,
     isLoading?: boolean,

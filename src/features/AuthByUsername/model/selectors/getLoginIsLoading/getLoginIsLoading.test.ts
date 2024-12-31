@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSheme } from 'app/providers/StoreProvider';
+import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginIsLoading } from './getLoginIsLoading';
 
 describe('getLoginIsLoading.test', () => {
@@ -8,12 +8,12 @@ describe('getLoginIsLoading.test', () => {
             loginForm: {
                 isLoading: true
             },
-        } as unknown as StateSheme;
+        } as unknown as StateSchema;
 
         expect(getLoginIsLoading(state)).toEqual(true);
     });
     test('should work with empty state', () => {
-        const state = {} as unknown as StateSheme;
+        const state = {} as unknown as StateSchema;
         expect(getLoginIsLoading(state)).toEqual(false);
     });
 });

@@ -1,5 +1,5 @@
 import { describe, expect, test } from '@jest/globals';
-import { StateSheme } from 'app/providers/StoreProvider';
+import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginError } from './getLoginError';
 
 describe('getLoginError.test', () => {
@@ -8,12 +8,12 @@ describe('getLoginError.test', () => {
             loginForm: {
                 error: 'error',
             },
-        } as unknown as StateSheme;
+        } as unknown as StateSchema;
 
         expect(getLoginError(state)).toEqual('error');
     });
     test('should work with empty state', () => {
-        const state = {} as unknown as StateSheme;
+        const state = {} as unknown as StateSchema;
         expect(getLoginError(state)).toEqual(undefined);
     });
 });
