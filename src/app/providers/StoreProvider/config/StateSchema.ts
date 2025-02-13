@@ -4,7 +4,7 @@ import { LoginSchema } from 'features/AuthByUsername';
 import {
     AnyAction, EnhancedStore, Reducer, ReducersMapObject,
 } from '@reduxjs/toolkit';
-import { CombinedState } from 'redux';
+import { CombinedState, Dispatch } from 'redux';
 import { AxiosInstance } from 'axios';
 import { NavigateOptions } from 'react-router';
 import { To } from 'react-router-dom';
@@ -40,4 +40,5 @@ export interface ThunkExtraArg {
 export interface ThunkConfig<T> {
     rejectValue: T;
     extra: ThunkExtraArg;
+    dispatch: Dispatch;
 }

@@ -3,6 +3,7 @@ import i18n from 'shared/config/i18n/i18n';
 import { ThunkConfig } from 'app/providers/StoreProvider';
 import { User, userActions } from 'entities/User';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
+import { ThunkExtraArg } from 'app/providers/StoreProvider/config/StateSchema';
 
 interface LoginByUsernameProps {
     username: string;
@@ -11,9 +12,10 @@ interface LoginByUsernameProps {
 
 export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, ThunkConfig<string>>(
     'login/loginByUsername',
-    async (authData, { dispatch, extra, rejectWithValue }) => {
+    async (authData, thunkApi) => {
+        const { dispatch, extra, rejectWithValue } = thunkApi;
+
         try {
-            // @ts-ignore
             const response = await extra.api.post<User>('/login', authData);
 
             if (!response.data) {
@@ -22,7 +24,7 @@ export const loginByUsername = createAsyncThunk<User, LoginByUsernameProps, Thun
 
             localStorage.setItem(USER_LOCALSTORAGE_KEY, JSON.stringify(response.data));
             dispatch(userActions.setAuthData(response.data));
-            extra.navigate('/about');
+            extra.navigate?.('/about');
             return response.data;
         } catch (e) {
             console.log(e);

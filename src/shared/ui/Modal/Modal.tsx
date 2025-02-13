@@ -8,18 +8,18 @@ import {
   useRef,
   useState,
   MouseEvent,
+  MutableRefObject,
 } from 'react';
 import { useTheme } from 'app/providers/ThemeProvider';
-import { classNames } from '../../lib/classNames/classNames';
+import { classNames, Mods } from '../../lib/classNames/classNames';
 import cls from './Modal.module.scss';
 import { Portal } from '../Portal/Portal';
-import { lazy } from 'react';
 
 interface ModalProps {
   className?: string;
   children?: ReactNode;
   isOpen?: boolean;
-  onClose?: () => void;
+  onClose?: () => void | undefined;
   lazy?: boolean;
 }
 
@@ -28,8 +28,8 @@ const ANIMATION_DELAY = 300;
 export const Modal = (props: ModalProps) => {
   const [isClosing, setIsClosing] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
-  const timeRef = useRef<ReturnType<typeof setTimeout>>();
-  const modalRef = useRef<HTMLDivElement>();
+  const timeRef = useRef() as MutableRefObject<ReturnType<typeof setTimeout>>;
+  const modalRef = useRef<HTMLDivElement | null>(null);
   const { theme } = useTheme();
   const {
     className,
@@ -39,7 +39,7 @@ export const Modal = (props: ModalProps) => {
     lazy,
   } = props;
 
-  const mods: Record<string, boolean> = {
+  const mods: Mods = {
     [cls.opened]: isOpen,
     [cls.closed]: isClosing,
   };
@@ -54,7 +54,7 @@ export const Modal = (props: ModalProps) => {
     if (modalRef.current === e.target) {
       setIsClosing(true);
       timeRef.current = setTimeout(() => {
-        onClose();
+        onClose?.();
         setIsClosing(false);
       }, ANIMATION_DELAY);
     }
@@ -63,7 +63,7 @@ export const Modal = (props: ModalProps) => {
   const closeKeyHandler = () => {
     setIsClosing(true);
     timeRef.current = setTimeout(() => {
-      onClose();
+      onClose?.();
       setIsClosing(false);
     }, ANIMATION_DELAY);
   };

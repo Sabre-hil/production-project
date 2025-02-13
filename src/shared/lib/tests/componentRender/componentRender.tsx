@@ -16,8 +16,7 @@ const componentRender = (component: ReactNode, options: componentRenderOptions =
     <MemoryRouter initialEntries={[route]}>
       <I18nextProvider i18n={i18nForTesting}>
         {component}
-      </I18nextProvider>
-      ,
+      </I18nextProvider>,
     </MemoryRouter>,
 
   );
