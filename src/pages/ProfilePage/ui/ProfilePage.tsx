@@ -6,6 +6,7 @@ import {
     getProfileForm, 
     getProfileLoading, 
     getProfileReadonly, 
+    getProfileValidateErrors, 
     profileReducer
 } from "entities/Profile";
 import { 
@@ -14,9 +15,9 @@ import {
 } from "shared/lib/components/DynamicModuleLoader/DynamicModuleLoader";
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { Currency } from "entities/Currency";
-import { ProfileCard } from '../../../entities/Profile/ui/ProfileCard/ProfileCard';
 import { profileActions } from 'entities/Profile/model/slice/profileSlice';
 import { Country } from "entities/Country";
+import { ProfileCard } from '../../../entities/Profile/ui/ProfileCard/ProfileCard';
 
 interface ProfilePageProps {
     className?: string;
@@ -33,6 +34,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
     const profileDataLoading = useSelector(getProfileLoading);
     const profileDataError = useSelector(getProfileError);
     const profileReadonly = useSelector(getProfileReadonly);
+    const validateErrors = useSelector(getProfileValidateErrors);
 
     useEffect(() => {
         dispatch(fetchProfileData());
@@ -82,6 +84,7 @@ const ProfilePage = ({ className }: ProfilePageProps) => {
                 onChangeAvatar={onChangeAvatar}
                 onChangeCurrency={onChangeCurrency}
                 onChangeCountry={onChangeCountry}
+                validateErrors={validateErrors}
             />
         </DynamicModuleLoader>
     )

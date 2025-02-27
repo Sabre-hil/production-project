@@ -10,5 +10,8 @@
   "throw error": "throw error",
   "Главная": "Main",
   "О сайте": "About us",
-  "Короткий язык": "en"
+  "Короткий язык": "en",
+  "Войти": "Login",
+  "Выйти": "Logout",
+  "Профиль": "Profile"
 }

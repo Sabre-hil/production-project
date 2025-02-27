@@ -1,4 +1,5 @@
 export { Profile, ProfileSchema } from './model/types/profile';
+export { validateProfileData } from './model/services/validateProfileData/validateProfileData';
 export { profileActions, profileReducer } from './model/slice/profileSlice';
 export { fetchProfileData } from './model/services/fetchProfileData/fetchProfileData';
 export { updateProfileData } from './model/services/updateProfileData/updateProfileData';
@@ -8,3 +9,4 @@ export { getProfileLoading } from 'entities/Profile/model/selectors/getProfileLo
 export { getProfileError } from 'entities/Profile/model/selectors/getProfileError/getProfileError';
 export { getProfileReadonly } from 'entities/Profile/model/selectors/getProfileReadonly/getProfileReadonly';
 export { getProfileForm } from 'entities/Profile/model/selectors/getProfileForm/getProfileForm';
+export { getProfileValidateErrors } from './model/selectors/getProfileValidateError/getProfileValidateError';

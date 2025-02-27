@@ -3,11 +3,10 @@ import { memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { LangSweather } from 'widgets/LangSweather/LangSweather';
 import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { useTranslation } from 'react-i18next';
 import { Button, ButtonSize, ButtonTheme } from '../../../../shared/ui/Button/Button';
-import cls from './Sidebar.module.scss';
 import { SidebarItemList } from 'widgets/Sidebar/model/items';
 import { SidebarItem } from '../SidebarItem/SidebarItem';
+import cls from './Sidebar.module.scss';
 
 interface SidebarProps {
   className?: string;

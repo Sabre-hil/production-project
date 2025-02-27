@@ -3,9 +3,8 @@ import { useTranslation } from "react-i18next";
 import { classNames, Mods } from "shared/lib/classNames/classNames";
 import { Text, TextAlign, TextTheme } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from "shared/ui/Button/Button";
-import { Profile } from "entities/Profile/model/types/profile";
+import { Profile, ValidateProfileErrors } from "entities/Profile/model/types/profile";
 import { Input } from 'shared/ui/Input/Input';
-import { Loader } from '../../../../shared/ui/Loader/Loader';
 import { CurrencySelect } from '../../../Currency/ui/CurrencySelect/CurrencySelect';
 import { useAppDispatch } from "shared/lib/hooks/useAppDispatch/useAppDispatch";
 import { profileActions } from "entities/Profile/model/slice/profileSlice";
@@ -13,8 +12,9 @@ import { updateProfileData } from "entities/Profile/model/services/updateProfile
 import { Avatar } from '../../../../shared/ui/Avatar/Avatar';
 import { Currency } from "entities/Currency";
 import { Country } from "entities/Country/model/types/country";
-import cls from './ProfileCard.module.scss';
 import { CountrySelect } from "entities/Country";
+import { Loader } from '../../../../shared/ui/Loader/Loader';
+import cls from './ProfileCard.module.scss';
 
 interface ProfileCard {
     className?: string;
@@ -22,6 +22,7 @@ interface ProfileCard {
     isError?: string;
     isLoading?: boolean;
     readonly?: boolean;
+    validateErrors?: ValidateProfileErrors[];
     onChangeFirstName?: (value?: string) => void;
     onChangeLastName?: (value?: string) => void;
     onChangeAge?: (value?: string) => void;
@@ -39,6 +40,7 @@ export const ProfileCard = (props: ProfileCard) => {
         isLoading, 
         readonly, 
         className,
+        validateErrors,
         onChangeFirstName,
         onChangeLastName,
         onChangeAge,
@@ -49,6 +51,13 @@ export const ProfileCard = (props: ProfileCard) => {
     } = props
     const { t } = useTranslation('profile');
     const dispatch = useAppDispatch();
+    const validateErrorsTranslate = {
+      [ValidateProfileErrors.SERVER_ERROR]: t('Ошибка сервера'),
+      [ValidateProfileErrors.INCORRECT_AGE]: t('Некорректный возраст'),
+      [ValidateProfileErrors.INCORRECT_COUNTRY]: t('Некорректный регион'),
+      [ValidateProfileErrors.INCORRECT_USER_DATA]: t('Имя и фамилия обязательны'),
+      [ValidateProfileErrors.NO_DATA]: t('Данные не указаны'),
+    };
 
     const onEdit = useCallback(() => {
         dispatch(profileActions.setReadonly(false));
@@ -107,6 +116,13 @@ export const ProfileCard = (props: ProfileCard) => {
                 </div>
             )}
         </div>
+        {validateErrors?.length && validateErrors.map((err) => (
+          <Text 
+            key={err} 
+            theme={TextTheme.ERROR} 
+            text={validateErrorsTranslate[err]} 
+          />
+        ))}
         <div className={cls.data}>
             {data?.avatar && (
               <div className={cls.AvatarWrapper}>
