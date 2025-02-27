@@ -3,10 +3,7 @@ import { User, UserSchema } from '../types/user';
 import { USER_LOCALSTORAGE_KEY } from 'shared/const/localStorage';
 
 const initialState: UserSchema = {
-    authData: {
-        id: null,
-        username: null,
-    },
+    authData: null,
 };
 
 export const userSlice = createSlice({
@@ -18,6 +15,8 @@ export const userSlice = createSlice({
         },
         initAuthData: (state) => {
             const isUser = localStorage.getItem(USER_LOCALSTORAGE_KEY);
+
+            console.log(isUser, 'isUser pal');
 
             if (isUser) {
                 state.authData = JSON.parse(isUser);

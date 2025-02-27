@@ -1,15 +1,32 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-/* eslint-disable i18next/no-literal-string */
-import { Suspense } from 'react';
+import { memo, Suspense, useMemo } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import PageLoader from 'widgets/PageLoader/ui/PageLoader';
+import { useSelector } from 'react-redux';
 import { RouteConfig } from '../../../../shared/config/routeConfig/routeConfig';
+import PageLoader from 'widgets/PageLoader/ui/PageLoader';
+import { getUserAuthData } from 'entities/User';
 
-export const AppRouter = () => (
-  <>
+export const AppRouter = () => {
+  const isAuth = useSelector(getUserAuthData);
+
+  console.log(isAuth, 'isAuth [pa')
+
+  const routes = useMemo(() => {
+    return Object.values(RouteConfig).filter(route => {
+      if (route.authOnly && !isAuth) {
+        return false;
+      }
+
+      return true;
+    })
+  }, [isAuth]);
+
+  console.log(routes, 'routes [pa')
+
+
+  return (
     <Suspense fallback={<PageLoader />}>
       <Routes>
-        {Object.values(RouteConfig).map(({ element, path }) => (
+        {routes.map(({ element, path }) => (
           <Route
             key={path}
             element={<div className="page-wrapper">{element}</div>}
@@ -18,7 +35,7 @@ export const AppRouter = () => (
         ))}
       </Routes>
     </Suspense>
-  </>
-);
+  );
+};
 
-export default AppRouter;
+export default memo(AppRouter);
