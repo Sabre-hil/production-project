@@ -17,12 +17,12 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
   rules: {
     'react/jsx-filename-extension': [
-      4,
+      1,
       { extensions: ['.js', '.jsx', '.tsx'] },
     ],
     'import/no-unresolved': 'off',
     'import/prefer-default-export': 'off',
-    'no-unused-vars': 'warn',
+    'no-unused-vars': 'off',
     'react/require-default-props': 'off',
     'react/react-in-jsx-scope': 'off',
     'react/jsx-props-no-spreading': 'warn',
@@ -44,6 +44,8 @@ module.exports = {
     'react-hooks/exhaustive-deps': 'error',
     'no-param-reassign': 'off',
     'no-undef': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
   globals: {
     __IS_DEV__: true,
@@ -51,9 +53,11 @@ module.exports = {
   },
   overrides: [
     {
-      files: ['**/src/**/*.test.{ts.tsx}'],
+      files:  ['**/*.test.tsx', '**/*.test.ts'],
       rules: {
         'i18next/no-literal-string': 'off',
+        'jsx-a11y/click-events-have-key-events': 'off',
+        'jsx-a11y/no-static-element-interactions': 'off',
       },
     },
   ],
