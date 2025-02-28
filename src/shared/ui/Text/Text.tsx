@@ -1,16 +1,16 @@
-import { classNames, Mods } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import { memo } from 'react';
 import cls from './Text.module.scss';
-import { memo } from "react";
 
 export enum TextTheme {
     PRIMARY = 'primary',
-    ERROR = 'error'
+    ERROR = 'error',
 }
 
 export enum TextAlign {
     RIGHT = 'right',
     LEFT = 'left',
-    CENTER = 'center'
+    CENTER = 'center',
 }
 
 interface TextProps {
@@ -21,14 +21,13 @@ interface TextProps {
     align?: TextAlign;
 }
 
-
 export const Text = memo((props: TextProps) => {
     const {
         className,
-        title,
         text,
+        title,
         theme = TextTheme.PRIMARY,
-        align = TextAlign.LEFT
+        align = TextAlign.LEFT,
     } = props;
 
     const mods: Mods = {
@@ -38,8 +37,8 @@ export const Text = memo((props: TextProps) => {
 
     return (
         <div className={classNames(cls.Text, mods, [className])}>
-            {title && (<p className={cls.title}>{title}</p>)}
-            {text && (<p className={cls.text}>{text}</p>)}
+            {title && <p className={cls.title}>{title}</p>}
+            {text && <p className={cls.text}>{text}</p>}
         </div>
-    )
+    );
 });

@@ -1,19 +1,17 @@
-import { describe, expect, test } from '@jest/globals';
 import { StateSchema } from 'app/providers/StoreProvider';
 import { getLoginUsername } from './getLoginUsername';
 
 describe('getLoginUsername.test', () => {
     test('should return value', () => {
-        const state = {
+        const state: DeepPartial<StateSchema> = {
             loginForm: {
-                username: 'Andrey'
+                username: '123123',
             },
-        } as unknown as StateSchema;
-
-        expect(getLoginUsername(state)).toEqual('Andrey');
+        };
+        expect(getLoginUsername(state as StateSchema)).toEqual('123123');
     });
     test('should work with empty state', () => {
-        const state = {} as unknown as StateSchema;
-        expect(getLoginUsername(state)).toEqual('');
+        const state: DeepPartial<StateSchema> = {};
+        expect(getLoginUsername(state as StateSchema)).toEqual('');
     });
 });

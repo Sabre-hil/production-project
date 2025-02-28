@@ -1,7 +1,15 @@
-/* eslint-disable react/jsx-indent */
 import { classNames } from 'shared/lib/classNames/classNames';
-import cls from './Loader.module.scss';
+import './Loader.scss';
 
-export const Loader = () => (
-        <span className={classNames(cls.Loader, {}, [])} />
+interface LoaderProps {
+    className?: string;
+}
+
+export const Loader = ({ className }: LoaderProps) => (
+    <div className={classNames('lds-ellipsis', {}, [className])}>
+        <div />
+        <div />
+        <div />
+        <div />
+    </div>
 );

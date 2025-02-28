@@ -1,57 +1,58 @@
-/* eslint-disable i18next/no-literal-string */
-import { memo, useState } from 'react';
 import { classNames } from 'shared/lib/classNames/classNames';
-import { LangSweather } from 'widgets/LangSweather/LangSweather';
-import { ThemeSwitcher } from 'widgets/ThemeSwitcher';
-import { Button, ButtonSize, ButtonTheme } from '../../../../shared/ui/Button/Button';
-import { SidebarItemList } from 'widgets/Sidebar/model/items';
-import { SidebarItem } from '../SidebarItem/SidebarItem';
+import { memo, useMemo, useState } from 'react';
+import { ThemeSwitcher } from 'shared/ui/ThemeSwitcher';
+import { LangSwitcher } from 'shared/ui/LangSwitcher/LangSwitcher';
+import { Button, ButtonSize, ButtonTheme } from 'shared/ui/Button/Button';
+import { useSelector } from 'react-redux';
+import { getUserAuthData } from 'entities/User';
 import cls from './Sidebar.module.scss';
+import { SidebarItemsList } from '../../model/items';
+import { SidebarItem } from '../SidebarItem/SidebarItem';
 
 interface SidebarProps {
-  className?: string;
+    className?: string;
 }
 
 export const Sidebar = memo(({ className }: SidebarProps) => {
-  const [collapsed, setCollapsed] = useState(false);
-  const [state, setState] = useState(0);
+    const [collapsed, setCollapsed] = useState(false);
 
-  const onToggle = () => {
-    setCollapsed((prev) => !prev);
-  };
+    const onToggle = () => {
+        setCollapsed((prev) => !prev);
+    };
 
-  return (
-    <div
-      data-testid="sidebar"
-      className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [
-        className,
-      ])}
-    >
-      <button onClick={() => setState(state + 1)}>test {state}</button>
-      <Button
-        size={ButtonSize.L}
-        theme={ButtonTheme.BACKGROUND_INVERTED}
-        className={cls.collapsedBtn}
-        data-testid="sidebar-toggle"
-        type="button"
-        square
-        onClick={onToggle}
-      >
-        {collapsed ? '>' : '<'}
-      </Button>
-      <div className={cls.items}>
-        {SidebarItemList.map((item) => (
-          <SidebarItem
+    const itemsList = useMemo(() => SidebarItemsList.map((item) => (
+        <SidebarItem
             item={item}
             collapsed={collapsed}
             key={item.path}
-          />
-        ))}
-      </div>
-      <div className={cls.switchers}>
-        <ThemeSwitcher />
-        <LangSweather short={collapsed} className={cls.lang} />
-      </div>
-    </div>
-  );
+        />
+    )), [collapsed]);
+
+    return (
+        <div
+            data-testid="sidebar"
+            className={classNames(cls.Sidebar, { [cls.collapsed]: collapsed }, [className])}
+        >
+            <Button
+                data-testid="sidebar-toggle"
+                onClick={onToggle}
+                className={cls.collapseBtn}
+                theme={ButtonTheme.BACKGROUND_INVERTED}
+                size={ButtonSize.L}
+                square
+            >
+                {collapsed ? '>' : '<'}
+            </Button>
+            <div className={cls.items}>
+                {itemsList}
+            </div>
+            <div className={cls.switchers}>
+                <ThemeSwitcher />
+                <LangSwitcher
+                    short={collapsed}
+                    className={cls.lang}
+                />
+            </div>
+        </div>
+    );
 });

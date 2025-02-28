@@ -1,65 +1,66 @@
-import { ChangeEvent, InputHTMLAttributes, memo, useEffect, useRef, useState } from "react"
-import { classNames, Mods } from "shared/lib/classNames/classNames";
+import { classNames, Mods } from 'shared/lib/classNames/classNames';
+import React, {
+    InputHTMLAttributes, memo, useEffect, useRef, useState,
+} from 'react';
 import cls from './Input.module.scss';
-
 
 type HTMLInputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange' | 'readOnly'>
 
 interface InputProps extends HTMLInputProps {
-    className?: string,
-    value?: string | number,
-    onChange?: (value: string) => void,
-    autofocus?: boolean,
-    readonly?: boolean,
+    className?: string;
+    value?: string | number;
+    onChange?: (value: string) => void;
+    autofocus?: boolean;
+    readonly?: boolean;
 }
-
 
 export const Input = memo((props: InputProps) => {
     const {
         className,
         value,
         onChange,
-        placeholder,
         type = 'text',
-        autoFocus,
+        placeholder,
+        autofocus,
         readonly,
         ...otherProps
     } = props;
-    const [isFocused, setFocused] = useState(false);
-    const [caretPostion, setCaretPosition] = useState(0);
-    const focusRef = useRef<HTMLInputElement>(null);
-    const isVisibleCaret = isFocused && !readonly;
+    const ref = useRef<HTMLInputElement>(null);
+    const [isFocused, setIsFocused] = useState(false);
+    const [caretPosition, setCaretPosition] = useState(0);
 
-    const onChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-        onChange?.(event.target.value);
-        setCaretPosition(event.target.value.length)
+    const isCaretVisible = isFocused && !readonly;
+
+    useEffect(() => {
+        if (autofocus) {
+            setIsFocused(true);
+            ref.current?.focus();
+        }
+    }, [autofocus]);
+
+    const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        onChange?.(e.target.value);
+        setCaretPosition(e.target.value.length);
     };
 
     const onBlur = () => {
-        setFocused(false);
-    }
+        setIsFocused(false);
+    };
 
     const onFocus = () => {
-        setFocused(true);
-    }
+        setIsFocused(true);
+    };
 
-    const onSelect = (event: any) => {
-        setCaretPosition(event?.target?.selectionStart || 0);
-    }
-
-    useEffect(() => {
-        if (autoFocus) {
-            setFocused(true)
-            focusRef?.current?.focus();
-        }
-    }, [autoFocus]);
+    const onSelect = (e: any) => {
+        setCaretPosition(e?.target?.selectionStart || 0);
+    };
 
     const mods: Mods = {
-        [cls.readonly]: readonly
+        [cls.readonly]: readonly,
     };
 
     return (
-        <div className={classNames(cls.InputWrapper, mods, [className])}>
+        <div className={classNames(cls.InputWrapper, {}, [className])}>
             {placeholder && (
                 <div className={cls.placeholder}>
                     {`${placeholder}>`}
@@ -67,20 +68,24 @@ export const Input = memo((props: InputProps) => {
             )}
             <div className={cls.caretWrapper}>
                 <input
-                    ref={focusRef}
-                    onChange={onChangeHandler}
-                    onSelect={onSelect}
-                    onFocus={onFocus}
-                    onBlur={onBlur}
-                    className={cls.input}
+                    ref={ref}
                     type={type}
                     value={value}
+                    onChange={onChangeHandler}
+                    className={cls.input}
+                    onFocus={onFocus}
+                    onBlur={onBlur}
+                    onSelect={onSelect}
                     readOnly={readonly}
-                    {...otherProps} />
-                {isVisibleCaret && (
-                    <span style={{ left: `${caretPostion * 9}px` }} className={cls.caret}></span>
+                    {...otherProps}
+                />
+                {isCaretVisible && (
+                    <span
+                        className={cls.caret}
+                        style={{ left: `${caretPosition * 9}px` }}
+                    />
                 )}
             </div>
         </div>
-    )
+    );
 });

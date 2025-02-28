@@ -1,16 +1,20 @@
-import { ErrorButton } from 'app/providers/ErrorBoundary';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Counter } from '../../../entities/Counter/ui/Counter';
+import { Input } from 'shared/ui/Input/Input';
 
 const MainPage = () => {
-  const { t } = useTranslation('main');
-  return (
-    <div>
-      {t('Главная страница')}
-      <Counter />
-      <ErrorButton />
-    </div>
-  );
+    const { t } = useTranslation();
+    const [value, setValue] = useState('');
+
+    const onChange = (val: string) => {
+        setValue(val);
+    };
+
+    return (
+        <div>
+            {t('Главная страница')}
+        </div>
+    );
 };
 
 export default MainPage;

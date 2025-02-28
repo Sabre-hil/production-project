@@ -1,7 +1,6 @@
 .Sidebar {
     height: calc(100vh - var(--navbar-height));
     width: var(--sidebar-width);
-    width: 300px;
     background: var(--inverted-bg-color);
     position: relative;
     transition: width 0.3s;
@@ -19,15 +18,21 @@
     margin-left: 20px;
 }
 
-.collapsedBtn {
+.collapseBtn {
     position: absolute;
-    bottom: 32px;
     right: -32px;
+    bottom: 32px;
+}
+
+.items {
+    margin-top: 20px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
 }
 
 .collapsed {
     width: var(--sidebar-width-collapsed);
-    width: 80px;
 
     .switchers {
         flex-direction: column;

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAAA,OAAO,CAAC;EACN,KAAK,EAAE,IAAI;EACX,MAAM,EAAE,eAAiB;EACzB,gBAAgB,EAAE,yBAAyB;EAC3C,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,MAAM;EACnB,OAAO,EAAE,IAAI;CACd;;AAED,AAAA,MAAM,CAAC;EACL,WAAW,EAAE,IAAI;CAClB;;AAED,AAAA,SAAS,CAAC;EACR,YAAY,EAAE,IAAI;CACnB",
-    "sources": [
-        "../src/widgets/Navbar/ui/Navbar.module.scss"
-    ],
-    "names": [],
-    "file": "Navbar.module.css"
-}
