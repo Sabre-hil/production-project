@@ -8,6 +8,7 @@ import {
   ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
+import { ArticlesDetailsCommentsSheme } from 'pages/ArticleDetailsPage';
 import { LoginSchema } from 'features/AuthByUsername';
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
@@ -22,6 +23,7 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSheme;
+    articleDetailsComments?: ArticlesDetailsCommentsSheme;
 }
 
 export type StateSchemaKey = keyof StateSchema;
