@@ -7,9 +7,10 @@ export const fetchCommentByArticleId = createAsyncThunk<
     string | undefined,
     ThunkConfig<string>
     >(
-      'articleDetails/fetchCommentByArticleId',
+      'articleDetails/fetchCommentsByArticleId',
       async (articleId, thunkApi) => {
         const { extra, rejectWithValue } = thunkApi;
+        console.log(fetchCommentByArticleId, 'fetchCommentByArticleId vodr');
 
         if (!articleId) {
           return rejectWithValue('error');
@@ -23,15 +24,12 @@ export const fetchCommentByArticleId = createAsyncThunk<
             },
           });
 
-          console.log(response, 'response pal');
-
           if (!response.data) {
             throw new Error();
           }
 
           return response.data;
         } catch (e) {
-          console.log(e);
           return rejectWithValue('error');
         }
       },

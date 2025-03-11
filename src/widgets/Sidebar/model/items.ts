@@ -24,6 +24,11 @@ export const SidebarItemsList: SidebarItemType[] = [
     text: 'О сайте',
   },
   {
+    path: RoutePath.profile,
+    Icon: ProfileIcon,
+    text: 'Профиль',
+  },
+  {
     path: RoutePath.articles,
     Icon: ArticleIcon,
     text: 'Статьи',
