@@ -1,5 +1,6 @@
 export {
   Article,
+  ArticleView,
 } from './model/types/article';
 
 export {
@@ -9,6 +10,10 @@ export {
 export {
   ArticleDetails,
 } from './ui/ArticleDetails/ArticleDetails';
+
+export {
+  ArticleList,
+} from './ui/ArticleList/ArticleList';
 
 export {
   getArticleDetailsData,
