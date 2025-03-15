@@ -15,6 +15,7 @@ import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
 import { ProfileSchema } from 'entities/Profile';
 import { ArticleDetailsSheme } from 'entities/Article';
+import { ArticlesPageSheme } from 'pages/ArticlesPage';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -26,6 +27,7 @@ export interface StateSchema {
     articleDetails?: ArticleDetailsSheme;
     articleDetailsComments?: ArticlesDetailsCommentsSheme;
     addCommentForm?: AddCommentFormSheme;
+    articlesPage?: ArticlesPageSheme;
 }
 
 export type StateSchemaKey = keyof StateSchema;

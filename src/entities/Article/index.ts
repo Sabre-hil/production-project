@@ -16,6 +16,10 @@ export {
 } from './ui/ArticleList/ArticleList';
 
 export {
+  ArticleViewSelector,
+} from './ui/ArticleViewSelector/ArticleViewSelector';
+
+export {
   getArticleDetailsData,
   getArticleDetailsLoading,
   getArticleDetailsError,
