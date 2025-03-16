@@ -15,6 +15,7 @@ import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { useInitialEffect } from 'shared/lib/hooks/useInitialEffect/useInitialEffect';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { RoutePath } from 'shared/config/routeConfig/routeConfig';
+import { Page } from 'shared/ui/Page/Page';
 import {
   articleDetailsCommentsReducer,
   getArticleComments,
@@ -22,7 +23,6 @@ import {
 import {
   getArticlesCommentsIsLoading,
 } from '../../model/selectors/comment';
-
 import {
   addCommentForArticle,
 } from '../../model/services/addCommentForArticle/addCommentForArticle';
@@ -68,7 +68,7 @@ const ArticleDetailsPage = ({ className }: ArticlesDetailPageProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducers} removeAfterUnmount>
-      <div className={classNames(cls.ArticlesDetailPage, {}, [className])}>
+      <Page className={classNames(cls.ArticlesDetailPage, {}, [className])}>
         <Button theme={ButtonTheme.OUTLINE} onClick={onBackToList}>
           {t('Назад к списку')}
         </Button>
@@ -76,7 +76,7 @@ const ArticleDetailsPage = ({ className }: ArticlesDetailPageProps) => {
         <Text className={cls.commentTitle} title="Комментарии" />
         <AddCommentForm onSendComment={onSendComment} />
         <CommentList comments={comments} isLoading={commentsIsLoading} />
-      </div>
+      </Page>
     </DynamicModuleLoader>
   );
 };
