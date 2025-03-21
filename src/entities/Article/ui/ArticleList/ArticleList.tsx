@@ -1,18 +1,19 @@
 /* eslint-disable react/no-array-index-key */
-import { memo } from 'react';
+import { HTMLAttributeAnchorTarget, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Text, TextSize } from 'shared/ui/Text/Text';
 import { Article, ArticleView } from '../../model/types/article';
 import { ArticleListItem } from '../ArticleListItem/ArticleListItem';
-import cls from './ArticleList.module.scss';
 import { ArticleListItemSkeleton } from '../ArticleListItem/ArticleListItemSkeleton';
+import cls from './ArticleList.module.scss';
 
 interface ArticleListProps {
   className?: string;
   articles: Article[];
   isLoading?: boolean;
   view?: ArticleView;
+  target?: HTMLAttributeAnchorTarget;
 }
 
 const getSkeleton = (view: ArticleView) => new Array(view === ArticleView.SMALL ? 9 : 3)
@@ -24,6 +25,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
     articles,
     isLoading,
     view = ArticleView.SMALL,
+    target,
   } = props;
   const { t } = useTranslation();
 
@@ -33,6 +35,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
       view={view}
       key={article.id}
       className={cls.card}
+      target={target}
     />
   );
 

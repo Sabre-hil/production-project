@@ -6,7 +6,6 @@ import {
   ReducersMapObject,
 } from '@reduxjs/toolkit';
 import { AxiosInstance } from 'axios';
-import { ArticlesDetailsCommentsSheme } from 'pages/ArticleDetailsPage';
 import { LoginSchema } from 'features/AuthByUsername';
 import { AddCommentFormSheme } from 'features/AddCommentForm';
 import { CounterSchema } from 'entities/Counter';
@@ -15,6 +14,7 @@ import { ProfileSchema } from 'entities/Profile';
 import { ArticleDetailsSheme } from 'entities/Article';
 import { ArticlesPageSheme } from 'pages/ArticlesPage';
 import { UIScheme } from 'features/UI/model/types/UIScheme';
+import { ArticleDetailsPageScheme } from 'pages/ArticleDetailsPage/index';
 
 export interface StateSchema {
     counter: CounterSchema;
@@ -25,9 +25,9 @@ export interface StateSchema {
     loginForm?: LoginSchema;
     profile?: ProfileSchema;
     articleDetails?: ArticleDetailsSheme;
-    articleDetailsComments?: ArticlesDetailsCommentsSheme;
     addCommentForm?: AddCommentFormSheme;
     articlesPage?: ArticlesPageSheme;
+    articlesDetailsPage?: ArticleDetailsPageScheme;
 }
 
 export type StateSchemaKey = keyof StateSchema;
