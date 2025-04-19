@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 module.exports = {
   env: {
     browser: true,
@@ -14,7 +13,13 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'i18next', 'react-hooks'],
+  plugins: [
+    'react',
+    '@typescript-eslint',
+    'i18next',
+    'react-hooks',
+    'khizir-plugin',
+  ],
   rules: {
     'react/jsx-filename-extension': [
       1,
@@ -47,6 +52,7 @@ module.exports = {
     'no-undef': 'off',
     'jsx-a11y/click-events-have-key-events': 'off',
     'jsx-a11y/no-static-element-interactions': 'off',
+    'khizir-plugin/path-checker': 'error',
   },
   globals: {
     __IS_DEV__: true,
@@ -54,7 +60,7 @@ module.exports = {
   },
   overrides: [
     {
-      files:  ['**/*.test.tsx', '**/*.test.ts'],
+      files: ['**/*.test.tsx', '**/*.test.ts'],
       rules: {
         'i18next/no-literal-string': 'off',
         'jsx-a11y/click-events-have-key-events': 'off',

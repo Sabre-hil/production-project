@@ -48,6 +48,16 @@
     }
 }
 
+.size_s {
+    .title {
+        font: var(--font-m);
+    }
+
+    .text {
+        font: var(--font-s);
+    }
+}
+
 .inverted {
     .title {
         color: var(--inverted-primary-color);
