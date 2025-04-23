@@ -7,6 +7,9 @@ export default {
   argTypes: {
     backgroundColor: { control: 'color' },
   },
+  decorators: [
+    (Story) => <div style={{ padding: 100 }}><Story /></div>,
+  ],
 } as ComponentMeta<typeof ListBox>;
 
 const Template: ComponentStory<typeof ListBox> = (args) => <ListBox {...args} />;
@@ -20,7 +23,7 @@ DropTop.args = {
     { value: '3', content: 'dsadsaccccx', disabled: true },
     { value: '4', content: 'mmcxck' },
   ],
-  direction: 'top',
+  direction: 'top left',
 };
 
 export const DropBottom = Template.bind({});
@@ -32,5 +35,5 @@ DropBottom.args = {
     { value: '3', content: 'dsadsaccccx', disabled: true },
     { value: '4', content: 'mmcxck' },
   ],
-  direction: 'bottom',
+  direction: 'bottom left',
 };
