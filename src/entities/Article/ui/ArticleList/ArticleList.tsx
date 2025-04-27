@@ -26,7 +26,7 @@ const getSkeleton = (view: ArticleView) => new Array(view === ArticleView.SMALL 
 export const ArticleList = memo((props: ArticleListProps) => {
   const {
     className,
-    articles,
+    articles = [],
     isLoading,
     view = ArticleView.SMALL,
     target,
@@ -35,7 +35,7 @@ export const ArticleList = memo((props: ArticleListProps) => {
 
   const isBig = view === ArticleView.BIG;
   const itemsPerRow = isBig ? 1 : 3;
-  const rowCount = isBig ? articles.length : Math.ceil(articles.length / itemsPerRow);
+  const rowCount = isBig ? articles?.length : Math.ceil(articles.length / itemsPerRow);
 
   const rowRender = ({
     index, key, style,

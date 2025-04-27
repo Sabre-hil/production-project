@@ -52,6 +52,7 @@ export const DropDown = (props: DropDownProps) => {
               disabled={item.disabled}
               onClick={item.onClick}
               className={classNames(cls.item, { [cls.active]: active }, [])}
+              key={item.href}
             >
               {item.content}
             </button>

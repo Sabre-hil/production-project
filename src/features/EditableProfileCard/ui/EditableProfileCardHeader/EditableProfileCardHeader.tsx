@@ -1,33 +1,33 @@
-import { useCallback } from 'react';
-import { useSelector } from 'react-redux';
-import { useTranslation } from 'react-i18next';
-import { getUserAuthData } from 'entities/User';
-import {
-  getProfileData,
-  getProfileReadonly,
-  profileActions,
-  updateProfileData,
-} from 'entities/Profile';
 import { classNames } from 'shared/lib/classNames/classNames';
+import { useTranslation } from 'react-i18next';
+import { memo, useCallback } from 'react';
+import { useSelector } from 'react-redux';
+
+import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
+import { HStack } from 'shared/ui/Stack';
 import { Text } from 'shared/ui/Text/Text';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
-import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
-import cls from './ProfilePageHeader.module.scss';
+import { getUserAuthData } from 'entities/User';
+import { profileActions } from '../../model/slice/profileSlice';
+import { getProfileReadonly } from '../../model/selectors/getProfileReadonly/getProfileReadonly';
+import { getProfileData } from '../../model/selectors/getProfileData/getProfileData';
+import { updateProfileData } from '../../model/services/updateProfileData/updateProfileData';
 
-interface ProfilePageHeaderProps {
+interface EditableProfileCardHeaderProps {
     className?: string;
 }
 
-export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
+export const EditableProfileCardHeader = memo((props: EditableProfileCardHeaderProps) => {
   const {
     className,
   } = props;
+
   const { t } = useTranslation('profile');
-  const readonly = useSelector(getProfileReadonly);
   const authData = useSelector(getUserAuthData);
   const profileData = useSelector(getProfileData);
-  const dispatch = useAppDispatch();
   const canEdit = authData?.id === profileData?.id;
+  const readonly = useSelector(getProfileReadonly);
+  const dispatch = useAppDispatch();
 
   const onEdit = useCallback(() => {
     dispatch(profileActions.setReadonly(false));
@@ -42,14 +42,13 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
   }, [dispatch]);
 
   return (
-    <div className={classNames(cls.ProfilePageHeader, {}, [className])}>
+    <HStack max justify="between" className={classNames('', {}, [className])}>
       <Text title={t('Профиль')} />
       {canEdit && (
-        <div className={cls.btnsWrapper}>
+        <div>
           {readonly
             ? (
               <Button
-                className={cls.editBtn}
                 theme={ButtonTheme.OUTLINE}
                 onClick={onEdit}
               >
@@ -57,25 +56,23 @@ export const ProfilePageHeader = (props: ProfilePageHeaderProps) => {
               </Button>
             )
             : (
-              <>
+              <HStack gap="8">
                 <Button
-                  className={cls.editBtn}
                   theme={ButtonTheme.OUTLINE_RED}
                   onClick={onCancelEdit}
                 >
                   {t('Отменить')}
                 </Button>
                 <Button
-                  className={cls.saveBtn}
                   theme={ButtonTheme.OUTLINE}
                   onClick={onSave}
                 >
                   {t('Сохранить')}
                 </Button>
-              </>
+              </HStack>
             )}
         </div>
       )}
-    </div>
+    </HStack>
   );
-};
+});

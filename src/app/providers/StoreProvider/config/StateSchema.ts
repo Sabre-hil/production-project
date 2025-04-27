@@ -10,16 +10,18 @@ import { LoginSchema } from 'features/AuthByUsername';
 import { AddCommentFormSheme } from 'features/AddCommentForm';
 import { CounterSchema } from 'entities/Counter';
 import { UserSchema } from 'entities/User';
-import { ProfileSchema } from 'entities/Profile';
+import { ProfileSchema } from 'features/EditableProfileCard';
 import { ArticleDetailsSheme } from 'entities/Article';
 import { ArticlesPageSheme } from 'pages/ArticlesPage';
 import { UIScheme } from 'features/UI/model/types/UIScheme';
 import { ArticleDetailsPageScheme } from 'pages/ArticleDetailsPage/index';
+import { rtkApi } from 'shared/api/rtkApi';
 
 export interface StateSchema {
     counter: CounterSchema;
     user: UserSchema;
     ui: UIScheme;
+    [rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 
     // Асинхронные редюсеры
     loginForm?: LoginSchema;

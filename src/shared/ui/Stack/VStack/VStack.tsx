@@ -5,6 +5,6 @@ type VStackProps = Omit<FlexProps, 'direction'>
 export const VStack = (props: VStackProps) => {
   const { align = 'start' } = props;
   return (
-    <Flex direction="row" {...props} align={align} />
+    <Flex direction="column" {...props} align={align} />
   );
 };

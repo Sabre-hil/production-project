@@ -6975,10 +6975,10 @@ eslint-plugin-jsx-a11y@^6.5.1:
     language-tags "^1.0.5"
     minimatch "^3.0.4"
 
-eslint-plugin-khizir-plugin@^0.0.5:
-  version "0.0.5"
-  resolved "https://registry.npmjs.org/eslint-plugin-khizir-plugin/-/eslint-plugin-khizir-plugin-0.0.5.tgz"
-  integrity sha512-P6r2IGhl49PRy/tyPWVbMPd5TOvHxY0lryo0QtB6KnZS9NhFT6Bhsa08axNZUJt+2yQEO0oFBIlwC0Sh8TkxVA==
+eslint-plugin-khizir-plugin@^0.0.9:
+  version "0.0.9"
+  resolved "https://registry.npmjs.org/eslint-plugin-khizir-plugin/-/eslint-plugin-khizir-plugin-0.0.9.tgz"
+  integrity sha512-mY2zFd7NVZU/vIkOd6fpkuqCYTdFPthFGpl1SNcqRDIcHNbNe6SKSwr4gfi/ftSRn0uE5gnsfzNFovDLpTMEzQ==
   dependencies:
     requireindex "^1.2.0"
 
