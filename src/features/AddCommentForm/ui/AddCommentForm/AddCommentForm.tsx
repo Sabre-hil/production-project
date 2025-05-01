@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { classNames } from 'shared/lib/classNames/classNames';
 import { Button, ButtonTheme } from 'shared/ui/Button/Button';
 import { Input } from 'shared/ui/Input/Input';
+import { HStack } from 'shared/ui/Stack';
 import { useAppDispatch } from 'shared/lib/hooks/useAppDispatch/useAppDispatch';
 import { DynamicModuleLoader, ReducersList } from 'shared/lib/components/DynamicModuleLoader/DynamicModuleLoader';
 import {
@@ -42,7 +43,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
 
   return (
     <DynamicModuleLoader reducers={reducer}>
-      <div className={classNames(cls.AddCommentForm, {}, [className])}>
+      <HStack max className={classNames(cls.AddCommentForm, {}, [className])}>
         <Input
           className={cls.input}
           placeholder={t('Введите текст комментария')}
@@ -55,7 +56,7 @@ const AddCommentForm = memo((props: AddCommentFormProps) => {
         >
           {t('Отправить')}
         </Button>
-      </div>
+      </HStack>
     </DynamicModuleLoader>
   );
 });
