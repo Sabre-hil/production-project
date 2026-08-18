@@ -1,11 +1,11 @@
 export {
-  Article,
+  type Article,
   ArticleView,
   ArticleSortField,
   ArticleType,
 } from './model/types/article';
 
-export {
+export type {
   ArticleDetailsSheme,
 } from './model/types/articleDetailsSheme';
 
