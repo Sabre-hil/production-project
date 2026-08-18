@@ -1,2 +1,2 @@
-export { AdminPanelPage } from './ui/AdminPanelPage/AdminPanelPage';
-export { AdminPanelPageSchema } from './model/types/adminPanelPageSchema';
+export { AdminPanelPage } from "./ui/AdminPanelPage/AdminPanelPage";
+export type { AdminPanelPageSchema } from "./model/types/adminPanelPageSchema";

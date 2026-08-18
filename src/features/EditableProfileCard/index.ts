@@ -7,7 +7,7 @@ export {
 } from './ui/EditableProfileCardHeader/EditableProfileCardHeader';
 
 export {
-  ProfileSchema,
+  type ProfileSchema,
   ValidateProfileError,
 } from './model/types/editableProfileCardSchema';
 

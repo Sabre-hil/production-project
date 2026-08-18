@@ -11,6 +11,8 @@
     "jsx": "react-jsx",
     // Компилятор будет обрабатывать не только TS файлы, но и JS файлы
     "allowJs": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
     "strict": true,
     "moduleResolution": "node",
     // Для абсолютного импорта
@@ -42,6 +44,7 @@
   "include": [
     "./config/jest/setupTests.ts",
     "./src/**/*.ts",
-    "./src/**/*.tsx", "src/entities/Article/ui/ArticleListItem/indexPal.js",
+    "./src/**/*.tsx",
+    "src/entities/Article/ui/ArticleListItem/indexPal.js"
   ]
 }
