@@ -4,6 +4,7 @@ import webpack from "webpack";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
 import ReactRefreshWebpackPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import CircularDependecyPlugin from "circular-dependency-plugin";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
 import { BuildOptions } from "./types/config";
 
 export function buildPlugins({
@@ -32,6 +33,18 @@ export function buildPlugins({
     new CircularDependecyPlugin({
       exclude: /node_modules/,
       failOnError: true,
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      typescript: {
+        diagnosticOptions: {
+          semantic: true,
+          syntactic: true,
+        },
+        mode: "write-references",
+      },
+      issue: {
+        exclude: [{ code: "TS1261" }],
+      },
     }),
   ];
 
