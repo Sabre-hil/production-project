@@ -1,12 +1,10 @@
 /* eslint-disable react/no-array-index-key */
-import { Fragment, ReactNode } from 'react';
-import {
-  Menu,
-} from '@headlessui/react';
-import { classNames } from 'shared/lib/classNames/classNames';
-import { DropdownDirection } from 'shared/types/ui';
-import { AppLink } from '../AppLink/AppLink';
-import cls from './DropDown.module.scss';
+import { Fragment, ReactNode } from "react";
+import { Menu } from "@headlessui/react";
+import { classNames } from "shared/lib/classNames/classNames";
+import { DropdownDirection } from "shared/types/ui";
+import { AppLink } from "../AppLink/AppLink";
+import cls from "./DropDown.module.scss";
 
 export interface DropDowmItem {
   disabled?: boolean;
@@ -22,28 +20,21 @@ interface DropDownProps {
   direction?: DropdownDirection;
 }
 
-const mapDirectionClass: Record<DropdownDirection, string> = {
-  'bottom left': cls.optionsBottomLeft,
-  'bottom right': cls.optionsBottomRight,
-  'top left': cls.optionsTopLeft,
-  'top right': cls.optionsTopRight,
+export const mapDirectionClass: Record<DropdownDirection, string> = {
+  "bottom left": cls.optionsBottomLeft,
+  "bottom right": cls.optionsBottomRight,
+  "top left": cls.optionsTopLeft,
+  "top right": cls.optionsTopRight,
 };
 
 export const DropDown = (props: DropDownProps) => {
-  const {
-    className,
-    items,
-    trigger,
-    direction = 'bottom left',
-  } = props;
+  const { className, items, trigger, direction = "bottom left" } = props;
 
   const menuClasses = [mapDirectionClass[direction]];
 
   return (
     <Menu as="div" className={classNames(cls.DropDown, {}, [className])}>
-      <Menu.Button className={cls.Button}>
-        {trigger}
-      </Menu.Button>
+      <Menu.Button className={cls.Button}>{trigger}</Menu.Button>
 
       <Menu.Items className={classNames(cls.menu, {}, menuClasses)}>
         {items?.map((item, index) => {
