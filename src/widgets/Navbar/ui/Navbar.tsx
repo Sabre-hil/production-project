@@ -1,3 +1,4 @@
+import { MobileView, BrowserView } from "react-device-detect";
 import { memo, useCallback, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
@@ -19,8 +20,9 @@ import { HStack } from "shared/ui/Stack";
 import { Icon } from "shared/ui/Icon/Icon";
 import NotificationBell from "shared/assets/icons/notification-bell.svg";
 import { Popover } from "shared/ui/Popover/Popover";
-import cls from "./Navbar.module.scss";
 import { NotificationList } from "entities/Notification";
+import cls from "./Navbar.module.scss";
+import { Drawer } from "../../../shared/ui/Drawer/Drawer";
 
 interface NavbarProps {
   className?: string;
@@ -33,6 +35,7 @@ export const Navbar = memo(({ className }: NavbarProps) => {
   const dispatch = useDispatch();
   const isAdmin = useSelector(isUserAdmin);
   const isManager = useSelector(isUserManager);
+  const [isDrawer, setDrawer] = useState(false);
 
   const onCloseModal = useCallback(() => {
     setIsAuthModal(false);
@@ -46,7 +49,16 @@ export const Navbar = memo(({ className }: NavbarProps) => {
     dispatch(userActions.logout());
   }, [dispatch]);
 
+  const handleOpenDrawer = () => setDrawer(true);
+  const handlCloseDrawer = () => setDrawer(false);
+
   const isAdminPanelAvailable = isAdmin || isManager;
+
+  const trigger = (
+    <Button onClick={handleOpenDrawer} theme={ButtonTheme.CLEAR}>
+      <Icon Svg={NotificationBell} inverted className={cls.bell} />
+    </Button>
+  );
 
   if (authData) {
     return (
@@ -64,16 +76,19 @@ export const Navbar = memo(({ className }: NavbarProps) => {
           {t("Создание статьи")}
         </AppLink>
         <HStack gap="16" className={cls.actions}>
-          <Popover
-            direction="bottom left"
-            trigger={
-              <Button theme={ButtonTheme.CLEAR}>
-                <Icon Svg={NotificationBell} inverted className={cls.bell} />
-              </Button>
-            }
-          >
-            <NotificationList className={cls.Notifications} />
-          </Popover>
+          <>
+            <BrowserView>
+              <Popover direction="bottom left" trigger={trigger}>
+                <NotificationList className={cls.Notifications} />
+              </Popover>
+            </BrowserView>
+            <MobileView>
+              {trigger}
+              <Drawer isOpen={isDrawer} onClose={handlCloseDrawer}>
+                <NotificationList className={cls.Notifications} />
+              </Drawer>
+            </MobileView>
+          </>
 
           <DropDown
             direction="bottom left"
